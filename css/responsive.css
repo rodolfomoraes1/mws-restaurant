@@ -1,0 +1,6 @@
+@media screen and (max-width: 450px){
+	nav h1 a {
+	    font-size: 13pt;
+		letter-spacing: 6px;
+	}
+}
