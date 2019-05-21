@@ -1,6 +1,30 @@
-@media screen and (max-width: 450px){
-	nav h1 a {
-	    font-size: 13pt;
-		letter-spacing: 6px;
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (max-device-width: 502px) {
+	nav h1 a, header h1 a {
+	    font-size: 1.2rem;
+		letter-spacing: 5px;
+	}
+
+	footer {
+	  	font-size: 0.7em;
+	  	letter-spacing: 1px;
+	}
+
+	#restaurant-container, #reviews-container {
+  		width: 100%;
+  		position: relative;
+	}
+
+	.inside #map-container {
+  		width: 100%;
+  		height: 320px;
+  		top: 0px;
+  		position: relative;
+	}
+
+	.inside #footer {
+  		width: 100%;
 	}
 }

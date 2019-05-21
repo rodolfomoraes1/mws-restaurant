@@ -22,7 +22,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
+        mapboxToken: 'pk.eyJ1Ijoicm9kb2xmb21vcmFlczEiLCJhIjoiY2p2Z2lieXZhMDgwdzRicGdkMm5teDR6NSJ9.wLBZmgk5wsG3ssLuOKcjpg',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -126,7 +126,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -150,14 +150,17 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  name.style.fontSize = '1.5em';
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  date.style.fontSize = '1.3em';
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.style.fontSize = '1.3em';
   li.appendChild(rating);
 
   const comments = document.createElement('p');
@@ -173,8 +176,21 @@ createReviewHTML = (review) => {
 fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
-  li.innerHTML = restaurant.name;
+  const a = document.createElement('a');
+  a.innerHTML = restaurant.name;
+  a.href = DBHelper.urlForRestaurant(restaurant);
+  li.append(a);
   breadcrumb.appendChild(li);
+
+
+  //const breadcrumb = document.getElementById('breadcrumb');
+  //const li = document.createElement('li');
+  //const restaurantLink = document.createElement('a');
+  //restaurantLink.innerHTML = restaurant.name;
+  //restaurantLink.href = DBHelper.urlForRestaurant(restaurant);
+  //restaurantLink.setAttribute("aria-current","page");
+  //li.append(restaurantLink)
+  //breadcrumb.appendChild(li);
 }
 
 /**
