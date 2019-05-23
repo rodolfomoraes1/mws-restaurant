@@ -241,7 +241,7 @@ nav ul {
 }
 #restaurant-address {
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.2em;
   margin: 10px 0px;
 }
 #restaurant-cuisine {
@@ -295,5 +295,6 @@ nav ul {
   margin: 0 0 10px;
 }
 #restaurant-hours td {
+  font-size: 1.2em;
   color: #666;
 }

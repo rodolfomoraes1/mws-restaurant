@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-@media only screen and (max-device-width: 502px) {
+@media only screen and (max-device-width: 800px) {
 	nav h1 a, header h1 a {
 	    font-size: 1.2rem;
 		letter-spacing: 5px;
