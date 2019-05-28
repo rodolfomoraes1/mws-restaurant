@@ -81,17 +81,24 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
+  name.setAttribute('aria-label', restaurant.name);
   name.innerHTML = restaurant.name;
+  name.setAttribute('tabindex', '0');
 
   const address = document.getElementById('restaurant-address');
+  address.setAttribute('aria-label', restaurant.address);
   address.innerHTML = restaurant.address;
+  address.setAttribute('tabindex', '0');
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   image.alt = restaurant.name + ' restaurant image.';
+  image.setAttribute('tabindex', '0');
 
   const cuisine = document.getElementById('restaurant-cuisine');
+  cuisine.setAttribute('aria-label', restaurant.cuisine_type);
+  cuisine.setAttribute('tabindex', '0');
   cuisine.innerHTML = restaurant.cuisine_type;
 
   // fill operating hours
@@ -107,6 +114,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
   const hours = document.getElementById('restaurant-hours');
+  hours.setAttribute('aria-label', 'Restaurant working hours');
+  hours.setAttribute('tabindex', '0');
+
   for (let key in operatingHours) {
     const row = document.createElement('tr');
 
@@ -117,6 +127,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     const time = document.createElement('td');
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
+    row.setAttribute('tabindex', '0');
 
     hours.appendChild(row);
   }
@@ -129,11 +140,15 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
+  title.setAttribute('aria-label', 'Reviews');
+  title.setAttribute('tabindex', '0');
   container.appendChild(title);
 
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
+    noReviews.setAttribute('aria-label', 'No reviews yet!');
+    noReviews.setAttribute('tabindex', '0');
     container.appendChild(noReviews);
     return;
   }
@@ -150,24 +165,35 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
+  li.setAttribute('tabindex', '0');
+
   name.innerHTML = review.name;
+  name.setAttribute('aria-label', 'Reviewer ' + review.name);
+  name.setAttribute('tabindex', '0');
   name.style.fontSize = '1.5em';
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
   date.style.fontSize = '1.3em';
+  date.setAttribute('aria-label', 'Review date ' + review.date);
+  date.setAttribute('tabindex', '0');
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.setAttribute('aria-label', 'Review rating from 1 to 5 is ' + review.rating);
+  rating.setAttribute('tabindex', '0');
   rating.style.fontSize = '1.3em';
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.setAttribute('aria-label', 'Review commentary ' + review.comments);
+  comments.setAttribute('tabindex', '0');
   li.appendChild(comments);
 
+  li.setAttribute('aria-label', 'Review from ' + review.name);
   return li;
 }
 
@@ -182,16 +208,6 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   a.href = DBHelper.urlForRestaurant(restaurant);
   li.append(a);
   breadcrumb.appendChild(li);
-
-
-  //const breadcrumb = document.getElementById('breadcrumb');
-  //const li = document.createElement('li');
-  //const restaurantLink = document.createElement('a');
-  //restaurantLink.innerHTML = restaurant.name;
-  //restaurantLink.href = DBHelper.urlForRestaurant(restaurant);
-  //restaurantLink.setAttribute("aria-current","page");
-  //li.append(restaurantLink)
-  //breadcrumb.appendChild(li);
 }
 
 /**

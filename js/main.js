@@ -162,22 +162,28 @@ createRestaurantHTML = (restaurant) => {
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   image.alt = restaurant.name + ' restaurant image.';
+  image.setAttribute('tabindex', '0');
   li.append(image);
 
   const name = document.createElement('h3');
   name.innerHTML = restaurant.name;
+  name.setAttribute('tabindex', '0');
   li.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
+  neighborhood.setAttribute('tabindex', '0');
   li.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
+  address.setAttribute('tabindex', '0');
   li.append(address);
 
   const more = document.createElement('button');
   more.innerHTML = 'View Details';
+  more.setAttribute('aria-label', 'View Details for restaurant ' + restaurant.name);
+  more.setAttribute('tabindex', '0');
   more.onclick = function(){
     window.location.href = DBHelper.urlForRestaurant(restaurant);
   };
