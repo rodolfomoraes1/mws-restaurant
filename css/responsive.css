@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-@media only screen and (max-device-width: 800px) {
+@media screen and (max-device-width: 720px) {
 	nav h1 a, header h1 a {
 	    font-size: 1.2rem;
 		letter-spacing: 5px;
@@ -26,5 +26,12 @@
 
 	.inside #footer {
   		width: 100%;
+	}
+}
+
+@media screen and (max-device-width: 360px) {
+	nav h1 a, header h1 a {
+	    font-size: 1rem;
+		letter-spacing: 0px;
 	}
 }
